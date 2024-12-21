@@ -7,7 +7,6 @@ WIDTH = 800
 HEIGHT = 600
 PLAYER_RADIUS = 20
 MONEY_RADIUS = 10
-NUM_MONEY_SPAWNS = 10  # Number of money objects to spawn
 
 # --- Functions ---
 def start_game():
@@ -18,7 +17,7 @@ def start_game():
     money_amount = 10000 if is_rich else 0
     start_time = time.time()
     money_objects = []
-    create_money(NUM_MONEY_SPAWNS)  # Spawn initial money objects
+    create_money(20 if is_rich else 10)  # Spawn initial money objects
     update_game()
 
 def create_money(num_money):
