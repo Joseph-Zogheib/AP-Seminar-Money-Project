@@ -42,7 +42,6 @@ def update_game():
 
     player_coords = game_canvas.coords(player)
 
-    # Check for collision with all money objects
     for money_id in money_objects:
         money_coords = game_canvas.coords(money_id)
         if (
