@@ -9,13 +9,13 @@ MONEY_RADIUS = 10
 
 def start_game():
     global is_rich, money_amount, start_time, money_objects
-    menu_frame.pack_forget()  # Hide the menu
-    game_frame.pack()  # Show the game canvas
-    is_rich = random.random() < 0.1  # 10% chance of being rich
+    menu_frame.pack_forget()
+    game_frame.pack()
+    is_rich = random.random() < 0.1  # percentage rich
     money_amount = 10000 if is_rich else 0
     start_time = time.time()
     money_objects = []
-    create_money(20 if is_rich else 10)  # Spawn initial money objects
+    create_money(20 if is_rich else 10)
     update_game()
 
 def create_money(num_money):
@@ -36,7 +36,7 @@ def create_money(num_money):
 def update_game():
     global money_amount
     elapsed_time = time.time() - start_time
-    if elapsed_time >= 60:  # Game ends after 60 seconds
+    if elapsed_time >= 60:
         game_over()
         return
 
@@ -52,13 +52,13 @@ def update_game():
         ):
             money_amount += money_value
             game_canvas.delete(money_id)
-            money_objects.remove(money_id)  # Remove collected money from the list
-            create_money(1)  # Respawn one money object
+            money_objects.remove(money_id)
+            create_money(1)
 
     game_canvas.itemconfig(score_text, text=f"Money: ${money_amount}")
     game_canvas.itemconfig(status_text, text=f"Status: {'Rich' if is_rich else 'Poor'}")
     game_canvas.itemconfig(time_text, text=f"Time: {60 - int(elapsed_time)}")
-    game_canvas.after(100, update_game)  # Update every 100ms
+    game_canvas.after(100, update_game)
 
 def game_over():
     game_frame.pack_forget()
