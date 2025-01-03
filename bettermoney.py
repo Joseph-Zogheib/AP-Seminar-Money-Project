@@ -2,13 +2,11 @@ import tkinter as tk
 import random
 import time
 
-# --- Game Setup ---
 WIDTH = 800
 HEIGHT = 600
 PLAYER_RADIUS = 20
 MONEY_RADIUS = 10
 
-# --- Functions ---
 def start_game():
     global is_rich, money_amount, start_time, money_objects
     menu_frame.pack_forget()  # Hide the menu
@@ -78,7 +76,6 @@ def move_player(event):
         y + PLAYER_RADIUS,
     )
 
-# --- Key Bindings ---
 def move_player_keys(event):
     x, y = game_canvas.coords(player)
     speed = 5
@@ -100,7 +97,6 @@ def move_player_keys(event):
         x += speed
     game_canvas.coords(player, x, y, x + 2 * PLAYER_RADIUS, y + 2 * PLAYER_RADIUS)
 
-# --- UI Setup ---
 root = tk.Tk()
 root.title("The Money Project Game")
 
